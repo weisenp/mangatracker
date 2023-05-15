@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Manga Saver",
+  "version": "0.0.1",
+  "description": "Saves the location of the manga you're reading across devices",
+
+  "permissions": [
+    "tabs"
+  ],
+
+  "action": {
+    "default_popup": "src/popup.html"
+  },
+  "background":{
+    "service_worker": "src/service_worker.js"
+  },
+
+   "content_scripts": [
+    {
+      "js": ["src/scripts/save.js"],
+      "matches": [
+        "https://www.asurascans.com/manga/**",
+        "https://reaperscans.com/comics/**",
+        "https://flamescans.org/series/**"
+      ]
+    }
+  ]
+}
