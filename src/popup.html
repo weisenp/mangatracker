@@ -24,7 +24,10 @@
                 </div>
                 <div class="login-input">
                     <p class="error-message" id="errorMessage"></p>
-                    <button class="btn login-btn" id="login">Login/Signup</button>
+                    <div class="login-button-container">
+                        <button class="btn login-btn" id="login">Login</button>
+                        <button class="btn secondary login-btn" id="signup">Signup</button>
+                    </div>
                 </div>
             </div>
             <div class="login-message">
@@ -70,6 +73,7 @@
     </div>
     <script src="./dist/pocketbase.js"></script>
     <script src="popup.js"></script>
+    <script src="authentication.js"></script>
 </body>
 
 </html>
