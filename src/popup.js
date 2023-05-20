@@ -1,4 +1,4 @@
-const pb = new PocketBase('http://170.64.166.150');
+const pb = new PocketBase('https://pocketbase.libus.dev/');
 
 chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
     let url = tabs[0].url;
