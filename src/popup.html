@@ -1,79 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manga Saver</title>
-    <link rel="stylesheet" href="popup.css">
-</head>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
 
-<body>
-    <div style="display: none;" class="login">
-        <h1>Manga Tracker</h1>
-        <div class="login-container">
-            <div class="login-form">
-                <div class="login-input">
-                    <label for="email">EMAIL</label>
-                    <input type="email" name="email" id="email" placeholder="Email">
-                </div>
-                <div class="login-input">
-                    <label for="password">PASSWORD</label>
-                    <input type="password" name="password" id="password" placeholder="Password">
-                </div>
-                <div class="login-input">
-                    <p class="error-message" id="errorMessage"></p>
-                    <div class="login-button-container">
-                        <button class="btn login-btn" id="login">Login</button>
-                        <button class="btn secondary login-btn" id="signup">Signup</button>
-                    </div>
-                </div>
+  <body>
+    <div style="display: none" class="login">
+      <h1>Manga Tracker</h1>
+      <div class="login-container">
+        <div class="login-form">
+          <div class="login-input">
+            <label for="email">EMAIL</label>
+            <input type="email" name="email" id="email" placeholder="Email" />
+          </div>
+          <div class="login-input">
+            <label for="password">PASSWORD</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+            />
+          </div>
+          <div class="login-input">
+            <p class="error-message" id="errorMessage"></p>
+            <div class="login-button-container">
+              <button class="btn login-btn" id="login">Login</button>
+              <button class="btn secondary login-btn" id="signup">
+                Signup
+              </button>
             </div>
-            <div class="login-message">
-                <p>Login to track your manga</p>
-            </div>
+          </div>
         </div>
+        <div class="login-message">
+          <p>Login to track your manga</p>
+        </div>
+      </div>
     </div>
 
     <div class="menu">
-        <h1>Manga Tracker</h1>
-        <div class="info">
-            <div class="tracking info-message-container">
-                <p class="tracking-message info-lable">Currently tracking?</p>
-                <p class="tracking-status info-message" id="status">No</p>
-            </div>
-            <div style="display: none;" class="chapter info-message">
-                <p class="read-message">Last read chapter</p>
-                <p class="read-chapter" id="chapter">-</p>
-            </div>
+      <h1>Manga Tracker</h1>
+      <div class="info">
+        <div class="tracking info-message-container">
+          <p class="tracking-message info-lable">Currently tracking?</p>
+          <p class="tracking-status info-message" id="status">No</p>
+        </div>
+        <div style="display: none" class="chapter info-message">
+          <p class="read-message">Last read chapter</p>
+          <p class="read-chapter" id="chapter">-</p>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <div class="not-tracked button-container">
+          <button class="btn track" id="track">Track</button>
+          <button class="btn secondary untrack" id="untrack">
+            Stop tracking
+          </button>
         </div>
 
-
-        <div class="button-group">
-            <div class="not-tracked button-container">
-                <button class="btn track" id="track">Track</button>
-                <button class="btn secondary untrack" id="untrack">Stop tracking</button>
-            </div>
-
-            <div style="display: none;" class="tracked button-container">
-                <button class="btn track" id="track">Read Chapter <span id="lastRead"></span></button>
-                <button class="btn secondary untrack" id="untrack">Stop tracking</button>
-            </div>
+        <div style="display: none" class="tracked button-container">
+          <button class="btn track" id="track">
+            Read Chapter <span id="lastRead"></span>
+          </button>
+          <button class="btn secondary untrack" id="untrack">
+            Stop tracking
+          </button>
         </div>
+      </div>
 
-        <div class="text-container">
-            <a class="link options" id="seeAll" href="#">See all tracked manga</a>
-            <a class="link logout" id="logout" href="#">Logout</a>
-        </div>
+      <div class="text-container">
+        <a class="link options" id="seeAll" href="#">See all tracked manga</a>
+        <a class="link logout" id="logout" href="#">Logout</a>
+      </div>
     </div>
-    <div style="display: none;" class="unavailable">
-        <h1>Manga Tracker</h1>
-        <p class="sorry-message">Sorry, this page is not supported</p>
+    <div style="display: none" class="unavailable">
+      <h1>Manga Tracker</h1>
+      <p class="sorry-message">Sorry, this page is not supported</p>
     </div>
     <script src="./dist/pocketbase.js"></script>
     <script src="popup.js"></script>
     <script src="authentication.js"></script>
-</body>
-
+  </body>
 </html>
