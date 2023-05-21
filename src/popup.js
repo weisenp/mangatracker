@@ -13,18 +13,22 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
     document.querySelector("div.login").style.display = "block";
     document.querySelector("div.menu").style.display = "none";
   }
+  
+  let readingResult, manhwaResult, planToReadResult
+  
+  if (pb.authStore.isValid) {
+    readingResult = await pb.collection("reading").getList(1, 1, {
+      filter: `user.id = "${pb.authStore.model.id}" && manhwa.link = "${url}"`,
+    });
 
-  const readingResult = await pb.collection("reading").getList(1, 1, {
-    filter: `user.id = "${pb.authStore.model.id}" && manhwa.link = "${url}"`,
-  });
+    manhwaResult = await pb.collection("manhwas").getList(1, 1, {
+      filter: `link = "${url}"`,
+    });
 
-  const manhwaResult = await pb.collection("manhwas").getList(1, 1, {
-    filter: `link = "${url}"`,
-  });
-
-  const planToReadResult = await pb.collection("plantoread").getList(1, 1, {
-    filter: `user.id = "${pb.authStore.model.id}" && manhwa.link = "${url}"`,
-  });
+    planToReadResult = await pb.collection("plantoread").getList(1, 1, {
+      filter: `user.id = "${pb.authStore.model.id}" && manhwa.link = "${url}"`,
+    });
+  }
 
   // if the manhwa is already saved
   if (planToReadResult.totalItems > 0) {
