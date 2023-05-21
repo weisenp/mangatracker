@@ -28,32 +28,32 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
     planToReadResult = await pb.collection("plantoread").getList(1, 1, {
       filter: `user.id = "${pb.authStore.model.id}" && manhwa.link = "${url}"`,
     });
-  }
+    
+    // if the manhwa is already saved
+    if (planToReadResult.totalItems > 0) {
+      planToReadToggle();
+    } else if (readingResult.totalItems > 0) {
+      toggleRead();
 
-  // if the manhwa is already saved
-  if (planToReadResult.totalItems > 0) {
-    planToReadToggle();
-  } else if (readingResult.totalItems > 0) {
-    toggleRead();
+      // show the last read chapter
+      document.getElementById("lastRead").innerHTML =
+        readingResult.items[0].readChapter;
 
-    // show the last read chapter
-    document.getElementById("lastRead").innerHTML =
-      readingResult.items[0].readChapter;
+      // get the manhwa
+      const manwha = await pb
+        .collection("manhwas")
+        .getOne(readingResult.items[0].manhwa);
 
-    // get the manhwa
-    const manwha = await pb
-      .collection("manhwas")
-      .getOne(readingResult.items[0].manhwa);
+      // show the title
+      document.getElementById("title").innerHTML = manwha.name.split(" - ")[0];
 
-    // show the title
-    document.getElementById("title").innerHTML = manwha.name.split(" - ")[0];
-
-    // Show the date last updated
-    document.getElementById("dateUpdated").innerHTML = `${new Date(
-      manwha.lastUpdated
-    ).getDate()}/${new Date(manwha.lastUpdated).getMonth()}/${new Date(
-      manwha.lastUpdated
-    ).getFullYear()}`;
+      // Show the date last updated
+      document.getElementById("dateUpdated").innerHTML = `${new Date(
+        manwha.lastUpdated
+      ).getDate()}/${new Date(manwha.lastUpdated).getMonth()}/${new Date(
+        manwha.lastUpdated
+      ).getFullYear()}`;
+    }
   }
 
   // handle read button click
