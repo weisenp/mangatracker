@@ -10,8 +10,8 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
 
   //if not logged in show login screen
   if (!pb.authStore.isValid) {
-    document.querySelector("div.login").style.display = "block";
-    document.querySelector("div.menu").style.display = "none";
+    document.querySelector("div.login").classList.toggle("hidden");
+    document.querySelector("div.menu").classList.toggle("hidden");
   }
   
   let readingResult, manhwaResult, planToReadResult
