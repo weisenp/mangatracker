@@ -1,6 +1,6 @@
 const pb = new PocketBase("https://pocketbase.libus.dev/");
 
-chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
+chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
   let url = tabs[0].url;
   if (!url.includes("https://www.asurascans.com/manga/")) {
     // hides the div with class of menu and shows the div with class of unavailable
@@ -14,4 +14,8 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
     document.querySelector("body > div.login").style.display = "block";
     document.querySelector("body > div.menu").style.display = "none";
   }
+
+  const resultList = await pb.collection("reading").getList(1, 1, {
+    filter: `user.id = "${pb.authStore.model.id}" && manhwa.link = "${url}"`,
+  });
 });
