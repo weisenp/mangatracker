@@ -4,8 +4,8 @@
 document.getElementById("login").addEventListener("click", async () => {
   if (await login()) {
     // if login is successful hides the login menu and shows the main menu
-    document.querySelector("body > div.login").style.display = "none";
-    document.querySelector("body > div.menu").style.display = "block";
+    document.querySelector("div.login").classList.toggle("hidden");
+    document.querySelector("div.menu").classList.toggle("hidden");
   }
 });
 
@@ -13,8 +13,8 @@ document.getElementById("login").addEventListener("click", async () => {
 document.getElementById("signup").addEventListener("click", async () => {
   if (await signup()) {
     // if sign up is successful hides the login menu and shows the main menu
-    document.querySelector("body > div.login").style.display = "none";
-    document.querySelector("body > div.menu").style.display = "block";
+    document.querySelector("div.login").classList.toggle("hidden");
+    document.querySelector("div.menu").classList.toggle("hidden");
   }
 });
 
@@ -22,8 +22,8 @@ document.getElementById("signup").addEventListener("click", async () => {
 document.getElementById("logout").addEventListener("click", () => {
   pb.authStore.clear();
   // disables the main menu and shows the login menu
-  document.querySelector("body > div.login").style.display = "block";
-  document.querySelector("body > div.menu").style.display = "none";
+  document.querySelector("div.login").classList.toggle("hidden");
+  document.querySelector("div.menu").classList.toggle("hidden");
 });
 
 // gets email and password and then makes an account, then authenticate with that account

@@ -203,3 +203,7 @@ input:focus {
 .secondary:hover {
   background-color: var(--secondary-hover);
 }
+
+.hidden {
+  display: none !important;
+}
