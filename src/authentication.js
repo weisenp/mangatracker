@@ -6,6 +6,7 @@ document.getElementById("login").addEventListener("click", async () => {
     // if login is successful hides the login menu and shows the main menu
     document.querySelector("div.login").classList.toggle("hidden");
     document.querySelector("div.menu").classList.toggle("hidden");
+    chrome.storage.sync.set({ userId: pb.authStore.model.id });
   }
 });
 
@@ -15,6 +16,7 @@ document.getElementById("signup").addEventListener("click", async () => {
     // if sign up is successful hides the login menu and shows the main menu
     document.querySelector("div.login").classList.toggle("hidden");
     document.querySelector("div.menu").classList.toggle("hidden");
+    chrome.storage.sync.set({ userId: pb.authStore.model.id });
   }
 });
 
@@ -24,6 +26,12 @@ document.getElementById("logout").addEventListener("click", () => {
   // disables the main menu and shows the login menu
   document.querySelector("div.login").classList.toggle("hidden");
   document.querySelector("div.menu").classList.toggle("hidden");
+  chrome.storage.local.remove("userId", function () {
+    var error = chrome.runtime.lastError;
+    if (error) {
+      console.error(error);
+    }
+  });
 });
 
 // gets email and password and then makes an account, then authenticate with that account

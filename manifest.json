@@ -3,7 +3,7 @@
   "name": "Manga Saver",
   "version": "0.0.1",
   "description": "Saves the location of the manga you're reading across devices",
-  "permissions": ["tabs", "scripting"],
+  "permissions": ["tabs", "scripting", "storage"],
   "host_permissions": ["<all_urls>"],
 
   "action": {
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "js": ["src/scripts/updateChapter.js"],
+      "js": ["src/scripts/updateLocation.js"],
       "matches": [
         "https://www.asurascans.com/*",
         "https://reaperscans.com/*",
