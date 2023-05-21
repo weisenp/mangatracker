@@ -20,7 +20,27 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async (tabs) => {
 
   if (resultList.totalItems > 0) {
     // if already reading show read screen
-    document.querySelector("div.tracked").classList.toggle("hidden");
-    document.querySelector("div.not-tracked").classList.toggle("hidden");
+    document.querySelectorAll(".tracked").forEach((element) => {
+      element.classList.toggle("hidden");
+    });
+    document.querySelectorAll(".not-tracked").forEach((element) => {
+      element.classList.toggle("hidden");
+    });
+
+    document.getElementById("lastRead").innerHTML =
+      resultList.items[0].readChapter;
+
+    const manwha = await pb
+      .collection("manhwas")
+      .getOne(resultList.items[0].manhwa);
+    console.log(manwha);
+
+    document.getElementById("title").innerHTML = manwha.name.split(" - ")[0];
+
+    document.getElementById("dateUpdated").innerHTML = `${new Date(
+      manwha.lastUpdated
+    ).getDate()}/${new Date(manwha.lastUpdated).getMonth()}/${new Date(
+      manwha.lastUpdated
+    ).getFullYear()}`;
   }
 });

@@ -45,14 +45,10 @@
     <div class="menu">
       <h1>Manga Tracker</h1>
       <div class="info">
-        <div class="tracking info-message-container">
-          <p class="tracking-message info-lable">Currently tracking?</p>
-          <p class="tracking-status info-message" id="status">No</p>
-        </div>
-        <div class="chapter info-message hidden">
-          <p class="read-message">Last read chapter</p>
-          <p class="read-chapter" id="chapter">-</p>
-        </div>
+        <p class="title" id="title"></p>
+        <p class="info-message tracked hidden">
+          Last updated: <span class="info-content" id="dateUpdated"></span>
+        </p>
       </div>
 
       <div class="button-group">
@@ -78,7 +74,7 @@
         <a class="link logout" id="logout" href="#">Logout</a>
       </div>
     </div>
-    <div class="unavailable hidden">
+    <div style="display: flex" class="unavailable hidden">
       <h1>Manga Tracker</h1>
       <p class="sorry-message">Sorry, this page is not supported</p>
     </div>
