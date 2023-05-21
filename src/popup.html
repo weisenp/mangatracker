@@ -42,9 +42,17 @@
       </div>
     </div>
 
-    <div class="menu">
+    <div class="menu" id="menu">
       <h1>Manga Tracker</h1>
       <div class="info">
+        <p class="info-message not-tracked">
+          This manga is not being tracked. Click the button below to start
+          traking.
+        </p>
+        <p class="info-message plan hidden">
+          This manga is in your plan to read. Click the button below to start
+          reading.
+        </p>
         <p class="title" id="title"></p>
         <p class="info-message tracked hidden">
           Last updated: <span class="info-content" id="dateUpdated"></span>
@@ -53,18 +61,25 @@
 
       <div class="button-group">
         <div class="not-tracked button-container">
-          <button class="btn track" id="track">Track</button>
+          <button class="btn track" id="track">Read</button>
+          <button class="btn secondary untrack" id="saveForLater">
+            Save for later
+          </button>
+        </div>
+
+        <div class="tracked button-container hidden">
+          <button class="btn read" id="read">
+            Read chapter <span id="lastRead"></span>
+          </button>
           <button class="btn secondary untrack" id="untrack">
             Stop tracking
           </button>
         </div>
 
-        <div class="tracked button-container hidden">
-          <button class="btn track" id="track">
-            Read Chapter <span id="lastRead"></span>
-          </button>
-          <button class="btn secondary untrack" id="untrack">
-            Stop tracking
+        <div class="plan button-container hidden">
+          <button class="btn read" id="startReading">Start reading</button>
+          <button class="btn secondary untrack" id="rmPlanToRead">
+            Remove from list
           </button>
         </div>
       </div>
