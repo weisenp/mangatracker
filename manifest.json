@@ -21,6 +21,14 @@
         "https://reaperscans.com/comics/**",
         "https://flamescans.org/series/**"
       ]
+    },
+    {
+      "js": ["src/scripts/updateChapter.js"],
+      "matches": [
+        "https://www.asurascans.com/*",
+        "https://reaperscans.com/*",
+        "https://flamescans.org/*"
+      ]
     }
   ],
   "web_accessible_resources": [
