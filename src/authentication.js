@@ -7,6 +7,7 @@ document.getElementById("login").addEventListener("click", async () => {
     document.querySelector("div.login").classList.toggle("hidden");
     document.querySelector("div.menu").classList.toggle("hidden");
     chrome.storage.sync.set({ userId: pb.authStore.model.id });
+    location.reload();
   }
 });
 
@@ -17,6 +18,7 @@ document.getElementById("signup").addEventListener("click", async () => {
     document.querySelector("div.login").classList.toggle("hidden");
     document.querySelector("div.menu").classList.toggle("hidden");
     chrome.storage.sync.set({ userId: pb.authStore.model.id });
+    location.reload();
   }
 });
 
